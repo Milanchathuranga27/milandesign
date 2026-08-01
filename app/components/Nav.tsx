@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+// import Link from "next/link"; // restore with the CV button below
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -41,6 +41,9 @@ export default function Nav() {
           <span className="hidden font-mono text-xs uppercase tracking-[0.2em] text-foreground/80 lg:block">
             Colombo, LK
           </span>
+          {/* CV temporarily hidden — the page lives in app/_cv (private folder,
+              not routed). To restore: rename app/_cv back to app/cv and
+              uncomment this button.
           <Link
             href="/cv"
             className="group relative inline-flex cursor-pointer items-center gap-2 overflow-hidden rounded-full border border-foreground/25 px-4 py-2 font-mono text-xs uppercase tracking-[0.2em]"
@@ -57,6 +60,7 @@ export default function Nav() {
               ↗
             </span>
           </Link>
+          */}
         </div>
       </nav>
     </header>
