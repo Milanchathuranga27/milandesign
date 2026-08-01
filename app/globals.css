@@ -1,26 +1,149 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --color-bg: #0a0a0a;
+  --color-surface: #141414;
+  --color-primary: #e5202c;
+  --color-accent: #ff6a00;
+  --color-foreground: #f5f5f5;
+  --color-muted: #8a8a8a;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-sans: -apple-system, "SF Pro Display", "SF Pro Text", system-ui,
+    sans-serif;
+  --font-mono: "SF Mono", ui-monospace, "Menlo", monospace;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --animate-marquee: marquee 28s linear infinite;
+  --animate-scroll-cue: scroll-cue 1.6s ease-in-out infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes scroll-cue {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(7px);
+      opacity: 0.35;
+    }
   }
 }
 
+html {
+  scroll-behavior: initial;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-foreground);
+}
+
+/* Custom classes live in the components layer so Tailwind utilities
+   (e.g. `absolute` on positioned image wrappers) can still override them. */
+@layer components {
+  /* Signature gradient utility */
+  .gradient-brand {
+    background-image: linear-gradient(135deg, #e5202c, #ff6a00);
+  }
+
+  .text-gradient-brand {
+    background-image: linear-gradient(135deg, #e5202c 20%, #ff6a00 80%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  /* Red-orange duotone treatment for all imagery */
+  .img-toned {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .img-toned img {
+    filter: grayscale(65%) contrast(1.08) brightness(0.92);
+  }
+
+  .img-toned::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(135deg, #e5202c, #ff6a00);
+    mix-blend-mode: multiply;
+    opacity: 0.85;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Blue-to-orange duotone variant (testimonial cards) */
+  .img-toned-cool::after {
+    background-image: linear-gradient(160deg, #1e3a8a, #e5202c 55%, #ff6a00);
+  }
+
+  /* Split-text measurement guards */
+  .split-line {
+    display: block;
+    overflow: hidden;
+  }
+
+  .split-line > span {
+    display: block;
+    will-change: transform;
+  }
+}
+
+/* CV page prints as a clean light document */
+@media print {
+  body {
+    background: #ffffff;
+    color: #111111;
+  }
+
+  header,
+  footer,
+  .print-hide {
+    display: none !important;
+  }
+
+  .cv-page {
+    padding-top: 0;
+  }
+
+  .cv-page .text-muted {
+    color: #444444;
+  }
+
+  .cv-page .text-accent {
+    color: #c2410c;
+  }
+
+  .cv-page [data-cv-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
