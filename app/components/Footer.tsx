@@ -9,6 +9,13 @@ import { useMagnetic } from "../lib/useMagnetic";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
+const SOCIALS = [
+  { label: "Dribbble", href: "https://dribbble.com/milanC27" },
+  { label: "Behance", href: "https://www.behance.net/milanchathuranga" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/milan-chathuranga/" },
+  { label: "Instagram", href: "https://www.instagram.com/milan27c/" },
+];
+
 export default function Footer() {
   const root = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
@@ -84,13 +91,15 @@ export default function Footer() {
           data-cta-line
           className="mt-14 flex justify-center gap-8 font-mono text-xs uppercase tracking-[0.2em] text-muted"
         >
-          {["Dribbble", "Behance", "LinkedIn", "Instagram"].map((social) => (
-            <li key={social}>
+          {SOCIALS.map((social) => (
+            <li key={social.label}>
               <a
-                href="#top"
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="cursor-pointer transition-colors duration-200 hover:text-foreground"
               >
-                {social}
+                {social.label}
               </a>
             </li>
           ))}

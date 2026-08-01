@@ -78,7 +78,7 @@ export default function About() {
       >
         <div
           data-about-fade
-          className="img-toned h-72 w-56 rounded-xl"
+          className="img-true h-72 w-56 rounded-xl"
         >
           <Image
             src="/images/aboutnew.png"

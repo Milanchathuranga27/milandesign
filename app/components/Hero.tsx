@@ -100,11 +100,11 @@ export default function Hero() {
       id="top"
       className="relative flex h-svh flex-col justify-end overflow-hidden"
     >
-      {/* Toned full-viewport background */}
-      <div data-hero-bg className="img-toned absolute inset-0 scale-110">
+      {/* Full-viewport background — untinted; the scrim below carries contrast */}
+      <div data-hero-bg className="absolute inset-0 scale-110">
         <Image
           src="/images/hero/hero2.png"
-          alt="Portrait of Milan, tinted in the signature red-orange duotone"
+          alt="Portrait of Milan"
           fill
           priority
           sizes="100vw"

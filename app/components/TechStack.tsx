@@ -5,61 +5,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useReducedMotion } from "../lib/useReducedMotion";
+import { TOOLS } from "../lib/tools";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
-
-const TOOLS = [
-  {
-    index: "01",
-    name: "Figma",
-    category: "Interface Design & Design Systems",
-    level: "Expert",
-  },
-  {
-    index: "02",
-    name: "Claude",
-    category: "Prototyping & Working Code",
-    level: "Daily Driver",
-  },
-  {
-    index: "03",
-    name: "Cursor",
-    category: "Frontend Development",
-    level: "Advanced",
-  },
-  {
-    index: "04",
-    name: "Adobe Suite",
-    category: "Visual Design & Illustration",
-    level: "Advanced",
-  },
-  {
-    index: "05",
-    name: "Webflow",
-    category: "No-Code Development",
-    level: "Advanced",
-  },
-
-  {
-    index: "06",
-    name: "Chat GPT",
-    category: "Brainstorming, Research & Content",
-    level: "Advanced",
-  },
-
-  {
-    index: "07",
-    name: "Gemini",
-    category: "Research Synthesis & Ideation",
-    level: "Advanced",
-  },
-  {
-    index: "08",
-    name: "GitHub",
-    category: "Version Control & Collaboration",
-    level: "Working Knowledge",
-  },
-];
 
 export default function TechStack() {
   const root = useRef<HTMLElement>(null);

@@ -5,52 +5,34 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useReducedMotion } from "../lib/useReducedMotion";
+import { TOOLS } from "../lib/tools";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const EXPERIENCE = [
   {
-    period: "2024 — Present",
-    role: "Senior UI/UX Designer",
+    period: "Jan 2024 — Present",
+    role: "UI/UX Engineer",
     company: "Azbow",
     points: [
-      "Lead designer on client products spanning fintech, healthcare, and SaaS — from discovery workshops to developer handoff.",
+      "Own the design process end to end on client web and mobile work — discovery and research through to developer handoff.",
       "Pioneered the studio's AI-native workflow: research synthesis with Gemini and working prototypes built with Claude, cutting concept-to-test time from weeks to days.",
       "Built and maintain the company-wide Figma component library used across every project.",
-      "Mentor two junior designers; run internal design critiques and usability-testing practice.",
-    ],
-  },
-  {
-    period: "2022 — 2024",
-    role: "UI/UX Designer",
-    company: "Nexora Digital",
-    points: [
-      "Designed web and mobile interfaces for 12+ client projects, owning flows from wireframe to polished UI.",
-      "Introduced prototype-based client reviews, cutting revision rounds from five to two on average.",
-      "Ran moderated usability tests and translated findings into prioritized design changes.",
-    ],
-  },
-  {
-    period: "2021 — 2022",
-    role: "Junior UI Designer",
-    company: "Brightline Studio",
-    points: [
-      "Produced UI screens, icons, and marketing visuals under senior direction.",
-      "Rebuilt the studio's internal asset library, halving time-to-first-draft on new projects.",
+      "Mentor a junior designer; run internal design critiques and usability-testing practice.",
     ],
   },
 ];
 
 const EDUCATION = [
   {
-    period: "2017 — 2021",
-    title: "BSc (Hons) in Information Technology",
-    place: "University of Moratuwa, Sri Lanka",
-  },
-  {
     period: "2023",
     title: "Google UX Design Professional Certificate",
-    place: "Coursera",
+    place: "Google · Coursera",
+  },
+  {
+    period: "2019 — 2023",
+    title: "Bachelor of Information Technology",
+    place: "University of Colombo, Sri Lanka",
   },
 ];
 
@@ -65,16 +47,7 @@ const SKILLS = [
   "Developer Handoff",
 ];
 
-const TOOLS = [
-  "Figma",
-  "Claude",
-  "Framer",
-  "Adobe Suite",
-  "Webflow",
-  "Gemini",
-  "Maze",
-  "Hotjar",
-];
+const TOOL_NAMES = TOOLS.map((tool) => tool.name);
 
 export default function CVContent() {
   const root = useRef<HTMLDivElement>(null);
@@ -108,7 +81,7 @@ export default function CVContent() {
               Milan
             </h1>
             <p className="mt-3 text-xl text-muted">
-              UI/UX Designer · 4+ Years of Experience
+              UI/UX Engineer · 4+ Years of Experience
             </p>
           </div>
           <div className="flex flex-col items-start gap-3 font-mono text-xs uppercase tracking-[0.15em] text-muted md:items-end">
@@ -174,7 +147,7 @@ export default function CVContent() {
 
           <section data-cv-reveal className="mt-16">
             <h2 className="mb-8 font-mono text-xs uppercase tracking-[0.25em] text-foreground/80">
-              → Education & Certification
+              → Education
             </h2>
             <div className="space-y-6">
               {EDUCATION.map((item) => (
@@ -220,7 +193,7 @@ export default function CVContent() {
               → Tools
             </h2>
             <ul className="flex flex-wrap gap-2">
-              {TOOLS.map((tool) => (
+              {TOOL_NAMES.map((tool) => (
                 <li
                   key={tool}
                   className="rounded-full border border-foreground/20 px-4 py-2 font-mono text-xs uppercase tracking-[0.15em] text-muted"

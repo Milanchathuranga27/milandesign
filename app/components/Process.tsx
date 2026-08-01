@@ -66,7 +66,7 @@ export default function Process() {
       <div className="grid gap-12 md:grid-cols-3 md:gap-8">
         {STEPS.map((item) => (
           <article key={item.title} data-process-step className="group">
-            <div className="img-toned mb-8 aspect-square overflow-hidden rounded-xl">
+            <div className="img-true mb-8 aspect-square overflow-hidden rounded-xl">
               <Image
                 src={item.img}
                 alt={`${item.title} phase illustration`}

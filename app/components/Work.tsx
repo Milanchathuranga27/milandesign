@@ -56,7 +56,7 @@ export default function Work() {
     <section ref={root} id="work" className="px-6 py-28 md:px-10 md:py-40">
       <div className="mb-4 flex items-center justify-between border-t border-foreground/10 pt-8 font-mono text-xs uppercase tracking-[0.25em] text-foreground/80">
         <p>→ Selected Work</p>
-        <p>[2024 — 2026]</p>
+        <p>[2026]</p>
       </div>
       <h2 className="mb-16 text-[clamp(3rem,9vw,9rem)] font-bold uppercase leading-[0.95] tracking-tight">
         Projects
@@ -70,7 +70,11 @@ export default function Work() {
             data-work-card
             className={`group block cursor-pointer ${i % 2 === 1 ? "md:mt-24" : ""}`}
           >
-            <div className="img-toned aspect-[3/2] overflow-hidden rounded-xl">
+            <div
+              className={`${
+                project.realImagery ? "img-true" : "img-toned"
+              } aspect-[3/2] overflow-hidden rounded-xl`}
+            >
               <div data-work-img className="h-full w-full scale-110">
                 <Image
                   src={project.heroImg}

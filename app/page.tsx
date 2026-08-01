@@ -5,7 +5,6 @@ import Services from "./components/Services";
 import Work from "./components/Work";
 import Process from "./components/Process";
 import TechStack from "./components/TechStack";
-import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
 
 export default function Home() {
@@ -19,7 +18,7 @@ export default function Home() {
         <Work />
         <Process />
         <TechStack />
-        <Testimonials />
+        {/* Testimonials hidden until real client reviews come in. */}
       </main>
       <Footer />
     </>

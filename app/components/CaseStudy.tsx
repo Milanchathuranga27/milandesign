@@ -21,6 +21,7 @@ export default function CaseStudy({ project, nextProject }: CaseStudyProps) {
   const root = useRef<HTMLDivElement>(null);
   const overviewRef = useRef<HTMLParagraphElement>(null);
   const reduced = useReducedMotion();
+  const tone = project.realImagery ? "img-true" : "img-toned";
 
   useGSAP(
     () => {
@@ -171,7 +172,7 @@ export default function CaseStudy({ project, nextProject }: CaseStudyProps) {
 
         <div
           data-cs-hero-img
-          className="img-toned mt-14 aspect-[16/9] rounded-xl"
+          className={`${tone} mt-14 aspect-[16/9] rounded-xl`}
           style={{ clipPath: "inset(0% 0% 0% 0%)" }}
         >
           <Image
@@ -248,7 +249,7 @@ export default function CaseStudy({ project, nextProject }: CaseStudyProps) {
                 i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
               }`}
             >
-              <div className="img-toned aspect-[3/2] rounded-xl">
+              <div className={`${tone} aspect-[3/2] rounded-xl`}>
                 <Image
                   src={phase.img}
                   alt={`${phase.title} phase of ${project.title}`}
@@ -294,7 +295,7 @@ export default function CaseStudy({ project, nextProject }: CaseStudyProps) {
             <div
               key={src}
               data-cs-gallery-item
-              className={`img-toned aspect-[4/3] rounded-xl ${
+              className={`${tone} aspect-[4/3] rounded-xl ${
                 i % 2 === 1 ? "md:mt-16" : ""
               }`}
             >
@@ -332,17 +333,16 @@ export default function CaseStudy({ project, nextProject }: CaseStudyProps) {
         </div>
 
         {/* Client quote */}
-        <figure
-          data-cs-reveal
-          className="mx-auto mt-28 max-w-4xl text-center"
-        >
-          <blockquote className="text-2xl font-semibold leading-snug tracking-tight md:text-4xl">
-            &ldquo;{project.quote.text}&rdquo;
-          </blockquote>
-          <figcaption className="mt-8 font-mono text-xs uppercase tracking-[0.2em] text-muted">
-            {project.quote.name} — {project.quote.role}
-          </figcaption>
-        </figure>
+        {!project.hideQuote && (
+          <figure data-cs-reveal className="mx-auto mt-28 max-w-4xl text-center">
+            <blockquote className="text-2xl font-semibold leading-snug tracking-tight md:text-4xl">
+              &ldquo;{project.quote.text}&rdquo;
+            </blockquote>
+            <figcaption className="mt-8 font-mono text-xs uppercase tracking-[0.2em] text-muted">
+              {project.quote.name} — {project.quote.role}
+            </figcaption>
+          </figure>
+        )}
       </section>
 
       {/* ── Next project ─────────────────────────────────────── */}
